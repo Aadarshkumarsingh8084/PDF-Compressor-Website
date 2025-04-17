@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Compressor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.16.0/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>PDF Compressor</h1>
+        <p class="subtitle">Reduce your PDF file size while maintaining quality</p>
+        
+        <div class="upload-area" id="dropArea">
+            <input type="file" id="fileInput" accept=".pdf" />
+            <div class="upload-content">
+                <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF Icon" class="pdf-icon">
+                <p>Drag & drop your PDF file here or click to browse</p>
+            </div>
+        </div>
+        
+        <div class="options">
+            <div class="option-group">
+                <label for="compressionLevel">Compression Level:</label>
+                <select id="compressionLevel">
+                    <option value="500">Below 500KB</option>
+                    <option value="1000">Below 1000KB</option>
+                    <option value="custom">Custom Size (KB)</option>
+                </select>
+            </div>
+            
+            <div class="option-group custom-size" id="customSizeGroup" style="display: none;">
+                <label for="targetSize">Target Size (KB):</label>
+                <input type="number" id="targetSize" min="100" max="5000" value="500">
+            </div>
+            
+            <div class="option-group">
+                <label for="quality">Quality:</label>
+                <select id="quality">
+                    <option value="high">High (better quality)</option>
+                    <option value="medium" selected>Medium (balanced)</option>
+                    <option value="low">Low (smaller file)</option>
+                </select>
+            </div>
+        </div>
+        
+        <button id="compressBtn" class="btn" disabled>Compress PDF</button>
+        
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-bar" id="progressBar"></div>
+            <span id="progressText">0%</span>
+        </div>
+        
+        <div class="result" id="resultContainer" style="display: none;">
+            <div class="file-info">
+                <div class="original">
+                    <h3>Original File</h3>
+                    <p id="originalName"></p>
+                    <p id="originalSize"></p>
+                </div>
+                <div class="compressed">
+                    <h3>Compressed File</h3>
+                    <p id="compressedName"></p>
+                    <p id="compressedSize"></p>
+                    <p id="reduction"></p>
+                </div>
+            </div>
+            <button id="downloadBtn" class="btn download-btn">Download Compressed PDF</button>
+        </div>
+        
+        <div class="error" id="errorContainer" style="display: none;">
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>PDF Compressor - Free online tool to reduce PDF file size</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
