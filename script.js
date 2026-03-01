@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
+    
     const fileInput = document.getElementById('fileInput');
     const dropArea = document.getElementById('dropArea');
     const compressBtn = document.getElementById('compressBtn');
